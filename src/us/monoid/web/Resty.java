@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.Authenticator;
 import java.net.CookieHandler;
-import java.net.CookieManager;
 import java.net.InetSocketAddress;
 import java.net.MalformedURLException;
 import java.net.Proxy;
@@ -67,11 +66,6 @@ public class Resty {
 		// with existing content factories
 		// got rid of it: System.setProperty("java.content.handler.pkgs",
 		// "us.monoid.web.content.handler");
-		try {
-			CookieHandler.setDefault(new CookieManager());
-		} catch (NoClassDefFoundError oops) {
-			System.err.println("No CookieHandler. Running on GAE? Fine. No cookie support for you!");
-		}
 		Authenticator.setDefault(rath);
 	}
 
